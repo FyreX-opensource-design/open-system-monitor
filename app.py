@@ -30,6 +30,6 @@ def update_load():
 @app.context_processor
 def inject_load():
     load = [str(psutil.cpu_percent(interval=1)) + " %", str(CPUutil.CPUThreadLoad()) + " %", str(round(psutil.virtual_memory().used / 1024 / 1024 / 1024, 1)) + " GB", str(round(psutil.virtual_memory().free / 1024 / 1024 / 1024, 1)) + " GB", str(psutil.cpu_percent(interval=None, percpu=True)[1]) + " " + str(psutil.cpu_percent(interval=None, percpu=True)[2])]
-    return {'loadCPU': load[0], 'loadThreads': load[1], 'loadRAM_used': load[2], 'loadRAM_free': load[3]}
+    return {'loadCPU': load[0], 'loadRAM_used': load[1], 'loadRAM_free': load[2]}
 if __name__ == '__main__':
     app.run()
